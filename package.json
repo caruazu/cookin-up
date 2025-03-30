@@ -23,5 +23,9 @@
     "vite": "^6.2.1",
     "vite-plugin-vue-devtools": "^7.7.2",
     "vue-tsc": "^2.2.8"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/caruazu/cookin-up.git"
   }
 }
