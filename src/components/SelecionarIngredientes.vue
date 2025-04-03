@@ -1,16 +1,18 @@
 <script lang="ts">
 import { getCategorias } from '@/http/index';
 import type ICategoria from '@/interfaces/ICategorias';
+import CardCategoria from './CardCategoria.vue';
 
-export default{ 
-    data() {
-        return {
-            categorias: [] as ICategoria[]
-        }
-    },
-    async created(){
-      this.categorias = await getCategorias();
-    }
+export default{
+  components: {CardCategoria},
+  data() {
+      return {
+          categorias: [] as ICategoria[]
+      }
+  },
+  async created(){
+    this.categorias = await getCategorias();
+  }
 }
 </script>
 
@@ -21,9 +23,10 @@ export default{
 
         <ul class="categorias">
             <li v-for="categoria in categorias" v-bind:key="categoria.nome">
-                {{ categoria.nome }}
+                <CardCategoria :categoria="categoria"/>
             </li>
         </ul>
+        
         <p class="paragrafo dica">*Atenção: consideramos que você tem em casa sal, pimenta e água.</p>
     </section>
 </template>
