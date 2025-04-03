@@ -23,7 +23,7 @@ export default{
 
             <ul v-if="ingredientes.length" class="ingredientes-sua-lista">
                 <li v-for="ingrediente in ingredientes" v-bind:key="ingrediente" >
-                  <Tag v-bind:texto="ingrediente"/>
+                  <Tag v-bind:texto="ingrediente" v-bind:ativa="true"/>
                 </li>
             </ul>
             <p v-else class="paragrafo lista-vazia">

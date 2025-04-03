@@ -2,9 +2,10 @@
 import type ICategoria from '@/interfaces/ICategorias';
 import type { PropType } from 'vue';
 import Tag from './Tag.vue';
+import IngredienteSelecionavel from './IngredienteSelecionavel.vue';
 
 export default{
-  components: {Tag},
+  components: {Tag, IngredienteSelecionavel},
 
     props: {
         categoria: {
@@ -23,7 +24,7 @@ export default{
     </header>
     <ul class="categoria__ingredientes">
         <li v-for="ingrediente in categoria.ingredientes" v-bind:key="ingrediente">
-            <Tag v-bind:texto="ingrediente"/>
+            <IngredienteSelecionavel v-bind:ingrediente="ingrediente"/>
         </li>
     </ul>
 </article>
