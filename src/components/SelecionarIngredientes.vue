@@ -5,6 +5,8 @@ import CardCategoria from './CardCategoria.vue';
 
 export default{
   components: {CardCategoria},
+  emits: ['adicionarIngrediente','removerIngrediente'],
+
   data() {
       return {
           categorias: [] as ICategoria[]
@@ -23,7 +25,10 @@ export default{
 
         <ul class="categorias">
             <li v-for="categoria in categorias" v-bind:key="categoria.nome">
-                <CardCategoria :categoria="categoria"/>
+                <CardCategoria :categoria="categoria"
+                  v-on:adicionar-ingrediente="$emit('adicionarIngrediente', $event)"
+                  v-on:remover-ingrediente="$emit('removerIngrediente', $event)"
+                />
             </li>
         </ul>
         

@@ -8,7 +8,15 @@ export default{
 
   data(){
     return{
-      ingredientes: ['Alho','Manteiga','Orégano']
+      ingredientes: [] as string[]
+    }
+  },
+  methods:{
+    adicionarIngrediente(ingrediente: string){
+      this.ingredientes.push(ingrediente);
+    },
+    removerIngrediente(ingrediente: string){
+      this.ingredientes = this.ingredientes.filter(iLista => ingrediente !== iLista);
     }
   },
 }
@@ -32,7 +40,10 @@ export default{
             </p>
         </section>
 
-        <SelecionarIngredientes></SelecionarIngredientes>
+        <SelecionarIngredientes
+          v-on:adicionar-ingrediente="adicionarIngrediente($event)"
+          v-on:remover-ingrediente="removerIngrediente($event)"
+        />
     </main>
 </template>
 

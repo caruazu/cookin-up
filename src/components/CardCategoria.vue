@@ -6,6 +6,7 @@ import IngredienteSelecionavel from './IngredienteSelecionavel.vue';
 
 export default{
   components: {Tag, IngredienteSelecionavel},
+  emits: ['adicionarIngrediente', 'removerIngrediente'],
 
     props: {
         categoria: {
@@ -24,7 +25,11 @@ export default{
     </header>
     <ul class="categoria__ingredientes">
         <li v-for="ingrediente in categoria.ingredientes" v-bind:key="ingrediente">
-            <IngredienteSelecionavel v-bind:ingrediente="ingrediente"/>
+            <IngredienteSelecionavel 
+              v-bind:ingrediente="ingrediente" 
+              v-on:adicionar-ingrediente="$emit('adicionarIngrediente', $event)"
+              v-on:remover-ingrediente="$emit('removerIngrediente', $event)"
+            />
         </li>
     </ul>
 </article>
