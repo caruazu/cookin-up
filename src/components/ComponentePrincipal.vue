@@ -47,17 +47,20 @@ export default{
             </p>
         </section>
 
-        <SelecionarIngredientes
+        <KeepAlive include="SelecionarIngredientes">
+          <SelecionarIngredientes
           v-if="conteudo === 'SelecionarIngredientes'"
           v-on:adicionar-ingrediente="adicionarIngrediente($event)"
           v-on:remover-ingrediente="removerIngrediente($event)"
           v-on:buscar-receitas="navegar('MostrarReceitas')"
-        />
-
-        <MostrarReceitas
-          v-else="conteudo === 'MostrarReceitas'"
-          @editar-receitas="navegar('SelecionarIngredientes')"
-        />
+          />
+          
+          <MostrarReceitas
+            v-else="conteudo === 'MostrarReceitas'"
+            @editar-receitas="navegar('SelecionarIngredientes')"
+            v-bind:ingredientes="ingredientes"
+          />
+        </KeepAlive>
     </main>
 </template>
 
