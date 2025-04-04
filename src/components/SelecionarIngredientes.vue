@@ -2,10 +2,11 @@
 import { getCategorias } from '@/http/index';
 import type ICategoria from '@/interfaces/ICategorias';
 import CardCategoria from './CardCategoria.vue';
+import BotaoPrincipal from './BotaoPrincipal.vue';
 
 export default{
-  components: {CardCategoria},
-  emits: ['adicionarIngrediente','removerIngrediente'],
+  components: {CardCategoria, BotaoPrincipal},
+  emits: ['adicionarIngrediente','removerIngrediente', 'buscarReceitas'],
 
   data() {
       return {
@@ -33,6 +34,8 @@ export default{
         </ul>
         
         <p class="paragrafo dica">*Atenção: consideramos que você tem em casa sal, pimenta e água.</p>
+
+        <BotaoPrincipal texto="Buscar" v-on:click="$emit('buscarReceitas')" />
     </section>
 </template>
 
